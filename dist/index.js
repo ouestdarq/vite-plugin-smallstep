@@ -1,6 +1,9 @@
 import { readFileSync } from 'fs';
 
-async function getHttps({ crt, key }) {
+async function getHttps({
+    crt = '/home/step/site.crt',
+    key = '/home/step/site.key',
+}) {
     let https = null;
     try {
         https = {
