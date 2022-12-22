@@ -1,6 +1,8 @@
-Vite plugin for smallstep certificates or any crt/key pair.
+# Vite Plugin Smallstep
 
-Usage:
+The plugin runs an async function on the config method, awaiting the fs.readFileSync and CRT/KEY pair being read correctly.
+
+## Usage
 
 ```
 import smallstep from 'vite-plugin-smallstep';
