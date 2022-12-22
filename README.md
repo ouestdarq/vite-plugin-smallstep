@@ -3,7 +3,7 @@ Vite plugin for smallstep certificates or any crt/key pair.
 Usage:
 
 ```
-import smallstep from './vite-plugin-smallstep.js';
+import smallstep from 'vite-plugin-smallstep';
 export default defineConfig(async ({ mode }) => {
     return {
         plugins: [
