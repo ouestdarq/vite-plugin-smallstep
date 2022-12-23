@@ -29,6 +29,7 @@ export default (options = { path: '/home/step' }) => {
                 },
             };
         },
+	// extracted from vite-plugin-restart
         configureServer(server) {
             let restart = `${options.path}/site.crt`;
             server.watcher.add([...restart]);
