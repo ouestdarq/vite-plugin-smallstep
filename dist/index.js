@@ -41,7 +41,6 @@ module.exports = (options = { steppath: '/home/step' }) => {
             server.watcher.on('change', restart);
             server.watcher.on('unlink', restart);
             function restart(file) {
-                console.log(file, crt);
                 if (micromatch.isMatch(file, crt)) {
                     server.restart();
                 }
