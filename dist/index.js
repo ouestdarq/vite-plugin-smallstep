@@ -10,12 +10,12 @@ async function getHttps(path) {
                 key: readFileSync(`${path}/site.key`),
             };
         } catch (err) {
+            console.log(err);
             // Do something with error.
         }
     }
     return https;
 }
-
 export default (options = { path: '/home/step' }) => {
     return {
         name: 'vite-plugin-smallstep',
@@ -35,7 +35,6 @@ export default (options = { path: '/home/step' }) => {
             server.watcher.on('add', restartServer);
             server.watcher.on('change', restartServer);
             server.watcher.on('unlink', restartServer);
-
             function restartServer(file) {
                 if (micromatch.isMatch(file, restart)) {
                     server.restart();
