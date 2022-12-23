@@ -2,6 +2,7 @@
   "name": "vite-plugin-smallstep",
   "version": "1.0.0",
   "description": "Vite plugin for smallstep certificates or any crt/key pair.",
+  "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
