@@ -18,6 +18,7 @@ async function getHttps(path = {}) {
     return https;
 }
 export default (options = { steppath: '/home/step' }) => {
+    const { steppath } = options;
     const path = {
         crt: resolve(steppath, 'site.crt'),
         key: resolve(steppath, 'site.key'),
