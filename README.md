@@ -1,6 +1,6 @@
 # Vite Plugin Smallstep
 
-The plugin runs an async function on the config method, awaiting the fs.readFileSync and CRT/KEY pair being read correctly.
+Plugin runs an async function on the config method, awaiting the fs.readFileSync on CRT/KEY pair waiting to be read correctly.
 
 ## Usage
 
