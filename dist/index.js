@@ -29,17 +29,15 @@ export default (options = { path: '/home/step' }) => {
                 },
             };
         },
-        configResolved(config) {
-            restart = `${options.path}/site.crt`;
-        },
         configureServer(server) {
+            let restart = `${options.path}/site.crt`;
             server.watcher.add([...restart]);
             server.watcher.on('add', restartServer);
             server.watcher.on('change', restartServer);
             server.watcher.on('unlink', restartServer);
 
             function restartServer(file) {
-                if (micromatch.isMatch(file, restartGlobs)) {
+                if (micromatch.isMatch(file, restart)) {
                     server.restart();
                 }
             }
