@@ -1,6 +1,6 @@
-const fs = import('fs');
-const path = import('path');
-const micromatch = import('micromatch');
+const fs = import('node:fs').default;
+const path = import('node:path').default;
+const micromatch = import('micromatch').default;
 
 async function getHttps(step = {}) {
     let https = null;
