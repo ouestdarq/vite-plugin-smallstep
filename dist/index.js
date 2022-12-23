@@ -4,15 +4,16 @@ import micromatch from 'micromatch';
 
 async function getHttps(path = {}) {
     let https = null;
-    try {
-        https = {
-            cert: readFileSync(path.crt),
-            key: readFileSync(path.key),
-        };
-    } catch (err) {
-        await new Promise((resolve) => setTimeout(resolve, 500));
-        console.log(err);
-        await getHttps(path);
+    while (!https) {
+        try {
+            https = {
+                cert: readFileSync(path.crt),
+                key: readFileSync(path.key),
+            };
+        } catch (err) {
+            await new Promise((resolve) => setTimeout(resolve, 5000));
+            console.log(err);
+        }
     }
     return https;
 }
