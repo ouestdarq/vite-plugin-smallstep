@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/proxymurder/vite-plugin-smallstep.git"
   },
+  "peerDependencies": {
+    "vite": "^2.9.0 || ^3.0.0 || ^4.0.0"
+  },
   "keywords": [
     "vite-plugin",
     "https",
