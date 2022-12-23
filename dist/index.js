@@ -4,7 +4,6 @@ import micromatch from 'micromatch';
 
 async function getHttps(path = {}) {
     let https = null;
-    console.log(https);
     try {
         https = {
             cert: readFileSync(path.crt),
@@ -25,7 +24,6 @@ export default (options = { steppath: '/home/step' }) => {
     };
     return {
         name: 'vite-plugin-smallstep',
-        enforce: 'post',
         async config(userConfig, { command, mode }) {
             const https = await getHttps(path);
             return {
@@ -36,7 +34,7 @@ export default (options = { steppath: '/home/step' }) => {
         },
         // extracted from vite-plugin-restart
         configureServer(server) {
-            server.watcher.add([...path.crt]);
+            server.watcher.add(path.crt);
             server.watcher.on('add', restart);
             server.watcher.on('change', restart);
             server.watcher.on('unlink', restart);
