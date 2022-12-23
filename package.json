@@ -18,7 +18,7 @@
     "vite-plugin",
     "https",
     "smallstep",
-    "certificates.",
+    "certificates",
     "cert",
     "crt",
     "key"
