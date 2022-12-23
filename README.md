@@ -5,13 +5,16 @@ The plugin runs an async function on the config method, awaiting the fs.readFile
 ## Usage
 
 ```
+npm install proxymurder/vite-plugin-smallstep
+```
+
+```
 import smallstep from 'vite-plugin-smallstep';
 export default defineConfig(async ({ mode }) => {
     return {
         plugins: [
             smallstep({
-                crt: path/to/crt,
-                key: path/to/key,
+                path: STEPPATH // default is /home/step
             }),
         ],
     };
