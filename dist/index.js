@@ -2,13 +2,15 @@ import { readFileSync } from 'node:fs';
 
 async function getHttps(path) {
     let https = null;
-    try {
-        https = {
-            cert: readFileSync(`${path}/site.crt`),
-            key: readFileSync(`${path}/site.key`),
-        };
-    } catch (err) {
-        await getHttps(path);
+    while (https == null) {
+        try {
+            https = {
+                cert: readFileSync(`${path}/site.crt`),
+                key: readFileSync(`${path}/site.key`),
+            };
+        } catch (err) {
+            // Do something with error.
+        }
     }
     return https;
 }

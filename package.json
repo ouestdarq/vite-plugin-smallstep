@@ -1,32 +1,29 @@
 {
-  "name": "vite-plugin-smallstep",
-  "version": "0.0.0",
-  "description": "Vite plugin for smallstep certificates or any site.crt/site.key pair.",
-  "type": "module",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/proxymurder/vite-plugin-smallstep.git"
-  },
-  "peerDependencies": {
-    "vite": "^2.9.0 || ^3.0.0 || ^4.0.0"
-  },
-  "keywords": [
-    "vite-plugin",
-    "https",
-    "smallstep",
-    "certificates",
-    "cert",
-    "crt",
-    "key"
-  ],
-  "author": "ProxyMurder",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/proxymurder/vite-plugin-smallstep/issues"
-  },
-  "homepage": "https://github.com/proxymurder/vite-plugin-smallstep#readme"
+    "name": "vite-plugin-smallstep",
+    "version": "0.0.0",
+    "description": "Vite plugin for smallstep certificates or any site.crt/site.key pair.",
+    "type": "module",
+    "main": "dist/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/proxymurder/vite-plugin-smallstep.git"
+    },
+    "peerDependencies": {
+        "vite": "^4.0.0"
+    },
+    "keywords": [
+        "vite-plugin",
+        "https",
+        "smallstep",
+        "certificates"
+    ],
+    "author": "ProxyMurder",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/proxymurder/vite-plugin-smallstep/issues"
+    },
+    "homepage": "https://github.com/proxymurder/vite-plugin-smallstep#readme"
 }
