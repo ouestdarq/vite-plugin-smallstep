@@ -1,27 +1,25 @@
 import { readFileSync } from 'fs';
 
-async function getHttps({
-    crt = '/home/step/site.crt',
-    key = '/home/step/site.key',
-}) {
+async function getHttps(path) {
     let https = null;
     try {
         https = {
-            cert: readFileSync(crt),
-            key: readFileSync(key),
+            cert: readFileSync(`${path}/site.crt`),
+            key: readFileSync(`${path}/site.key`),
         };
     } catch (err) {
-        await getHttps({ crt: crt, key: key });
+        await getHttps(path);
     }
     return https;
 }
 
-export default (userOptions = {}) => {
+export default (userOptions = { path: '/home/step' }) => {
     return {
         name: 'vite-plugin-smallstep',
         enforce: 'pre',
         async config(userConfig, { command, mode }) {
-            const https = await getHttps(userOptions);
+            const { path } = userOptions;
+            const https = await getHttps(path);
             return {
                 server: {
                     https: https,
