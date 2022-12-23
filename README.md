@@ -9,6 +9,8 @@ npm install proxymurder/vite-plugin-smallstep
 ```
 
 ```
+// vite.config.js
+
 import smallstep from 'vite-plugin-smallstep';
 export default defineConfig(async ({ mode }) => {
     return {
