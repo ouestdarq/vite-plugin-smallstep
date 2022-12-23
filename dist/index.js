@@ -23,7 +23,6 @@ export default (options = { steppath: '/home/step' }) => {
         crt: resolve(steppath, 'site.crt'),
         key: resolve(steppath, 'site.key'),
     };
-    console.log(path);
     return {
         name: 'vite-plugin-smallstep',
         enforce: 'pre',
