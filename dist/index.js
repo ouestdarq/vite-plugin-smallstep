@@ -17,7 +17,7 @@ async function getHttps(step = {}) {
     }
     return https;
 }
-export default (options = { steppath: '/home/step' }) => {
+module.exports = (options = { steppath: '/home/step' }) => {
     const { steppath } = options;
     const step = {
         crt: path.resolve(steppath, 'site.crt'),
