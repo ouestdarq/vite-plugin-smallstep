@@ -20,7 +20,7 @@ export default defineConfig(async ({ mode }) => {
     return {
         plugins: [
             smallstep({
-                path: STEPPATH // default is /home/step
+                steppath: STEPPATH // default is '/home/step'
             }),
         ],
     };
