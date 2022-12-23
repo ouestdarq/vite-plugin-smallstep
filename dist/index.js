@@ -1,27 +1,32 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
 import micromatch from 'micromatch';
 
-async function getHttps(path) {
+async function getHttps(path = {}) {
     let https = null;
     while (!https) {
         try {
             https = {
-                cert: readFileSync(`${path}/site.crt`),
-                key: readFileSync(`${path}/site.key`),
+                cert: readFileSync(path.crt),
+                key: readFileSync(path.key),
             };
         } catch (err) {
+            await new Promise((resolve) => setTimeout(resolve, 500));
             console.log(err);
-            // Do something with error.
         }
     }
     return https;
 }
-export default (options = { path: '/home/step' }) => {
+export default (options = { steppath: '/home/step' }) => {
+    const path = {
+        crt: resolve(steppath, 'site.crt'),
+        key: resolve(steppath, 'site.key'),
+    };
+    console.log(path);
     return {
         name: 'vite-plugin-smallstep',
         enforce: 'pre',
         async config(userConfig, { command, mode }) {
-            const { path } = options;
             const https = await getHttps(path);
             return {
                 server: {
@@ -29,15 +34,14 @@ export default (options = { path: '/home/step' }) => {
                 },
             };
         },
-	// extracted from vite-plugin-restart
+        // extracted from vite-plugin-restart
         configureServer(server) {
-            let restart = `${options.path}/site.crt`;
-            server.watcher.add([...restart]);
-            server.watcher.on('add', restartServer);
-            server.watcher.on('change', restartServer);
-            server.watcher.on('unlink', restartServer);
-            function restartServer(file) {
-                if (micromatch.isMatch(file, restart)) {
+            server.watcher.add([...path.crt]);
+            server.watcher.on('add', restart);
+            server.watcher.on('change', restart);
+            server.watcher.on('unlink', restart);
+            function restart(file) {
+                if (micromatch.isMatch(file, path.crt)) {
                     server.restart();
                 }
             }
