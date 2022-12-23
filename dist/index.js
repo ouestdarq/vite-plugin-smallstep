@@ -5,6 +5,7 @@ import micromatch from 'micromatch';
 async function getHttps(path = {}) {
     let https = null;
     while (!https) {
+        console.log(https);
         try {
             https = {
                 cert: readFileSync(path.crt),
