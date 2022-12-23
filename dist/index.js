@@ -1,8 +1,9 @@
 import { readFileSync } from 'node:fs';
+import path from 'node:path';
 
 async function getHttps(path) {
     let https = null;
-    while (https == null) {
+    while (!https) {
         try {
             https = {
                 cert: readFileSync(`${path}/site.crt`),
@@ -22,6 +23,7 @@ export default (userOptions = { path: '/home/step' }) => {
         async config(userConfig, { command, mode }) {
             const { path } = userOptions;
             const https = await getHttps(path);
+            console.log(this);
             return {
                 server: {
                     https: https,
