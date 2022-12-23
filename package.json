@@ -11,12 +11,8 @@
         "type": "git",
         "url": "git+https://github.com/proxymurder/vite-plugin-smallstep.git"
     },
-    "peerDependencies": {
-        "vite": "^4.0.0"
-    },
     "keywords": [
         "vite-plugin",
-        "https",
         "smallstep",
         "certificates"
     ],
@@ -25,5 +21,11 @@
     "bugs": {
         "url": "https://github.com/proxymurder/vite-plugin-smallstep/issues"
     },
-    "homepage": "https://github.com/proxymurder/vite-plugin-smallstep#readme"
+    "homepage": "https://github.com/proxymurder/vite-plugin-smallstep#readme",
+    "peerDependencies": {
+        "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "micromatch": "^4.0.5"
+    }
 }

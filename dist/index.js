@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import path from 'node:path';
+import micromatch from 'micromatch';
 
 async function getHttps(path) {
     let https = null;
@@ -16,19 +16,33 @@ async function getHttps(path) {
     return https;
 }
 
-export default (userOptions = { path: '/home/step' }) => {
+export default (options = { path: '/home/step' }) => {
     return {
         name: 'vite-plugin-smallstep',
         enforce: 'pre',
         async config(userConfig, { command, mode }) {
-            const { path } = userOptions;
+            const { path } = options;
             const https = await getHttps(path);
-            console.log(this);
             return {
                 server: {
                     https: https,
                 },
             };
+        },
+        configResolved(config) {
+            restart = `${options.path}/site.crt`;
+        },
+        configureServer(server) {
+            server.watcher.add([...restart]);
+            server.watcher.on('add', restartServer);
+            server.watcher.on('change', restartServer);
+            server.watcher.on('unlink', restartServer);
+
+            function restartServer(file) {
+                if (micromatch.isMatch(file, restartGlobs)) {
+                    server.restart();
+                }
+            }
         },
     };
 };
