@@ -2,10 +2,6 @@
 
 Plugin runs an async function on the config method, awaiting the fs.readFileSync on CRT/KEY pair waiting to be read correctly.
 
-### Important
-
-In order for plugin to work, `"type" : "module"` must be set in package.json which might break dependendencies.
-
 ## Usage
 
 ```
