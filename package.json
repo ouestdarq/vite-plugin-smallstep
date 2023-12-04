@@ -22,7 +22,7 @@
     },
     "homepage": "https://github.com/proxymurder/vite-plugin-smallstep#readme",
     "peerDependencies": {
-        "vite": "^5.0.0"
+        "vite": "^4.3.0 || ^5.0.0"
     },
     "dependencies": {
         "micromatch": "^4.0.5"
